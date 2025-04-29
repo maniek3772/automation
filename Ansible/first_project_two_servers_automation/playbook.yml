@@ -1,0 +1,22 @@
+# Playbook to create a directory on all servers, handling sudo passwords dynami>
+
+- hosts: all
+  gather_facts: false  # <--- Disable gathering facts
+  become: yes
+  vars_files:
+    - vault.yml
+
+  pre_tasks:
+    - name: Set the sudo password dynamically for each server
+      set_fact:
+        ansible_become_password: "{{ become_passwords[inventory_hostname] }}"
+
+    - name: Gather facts manually
+      setup:
+
+  tasks:
+    - name: Create a test directory
+      file:
+        path: /tmp/ansible_test_directory
+        state: directory
+        mode: '0755'
