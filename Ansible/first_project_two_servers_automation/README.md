@@ -10,7 +10,6 @@ This project shows how to set up **Ansible** to manage multiple Linux servers us
 ├── ansible.cfg #Ansible configuration file 
 ├── hosts # Inventory with server IPs and users 
 ├── vault.yml # Encrypted file with sudo passwords
-├── ansible.cfg # Ansible configuration  
 └── playbook.yml # Main Ansible playbook
 ```
 ---
